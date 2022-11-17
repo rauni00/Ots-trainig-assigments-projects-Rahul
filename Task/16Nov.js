@@ -15,6 +15,7 @@ setTimeout(() => {
 	Promise.resolve().then((a) => console.log('Promise 4'));
 	console.log('Hello 5');
 }, 500);
+console.log('Hello 5');
 
 console.log('Bye!');
 
