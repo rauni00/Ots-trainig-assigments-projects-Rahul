@@ -7,7 +7,7 @@ setTimeout(() => {
 	console.log('TimeOut 1');
 }, 500);
 setTimeout(() => {
-	Promise.resolve().then((a) => console.log('Promise 2'));
+	Promise.resolve().then((a) => console.log('Promise 2', a));
 	setTimeout(() => {
 		Promise.resolve().then((a) => console.log('Promise 3'));
 	}, 0);
@@ -20,3 +20,12 @@ console.log('Hello 5');
 console.log('Bye!');
 
 //! ------------------------------------------after Noon-----------------------------------------------
+
+setTimeout(() => {
+	Promise.resolve().then((a) => console.log('Resolved!'));
+}, 1000);
+setTimeout(() => {
+	Promise.reject((a) => {
+		console.log('Reject!!');
+	});
+}, 1000);
