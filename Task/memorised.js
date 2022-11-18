@@ -18,24 +18,15 @@ const memorized = sum();
 // memorized(5, 4);
 // memorized(16, 10);
 
-// !-------------------------------Memorized Multiply--------------------------------------------------------
-
-function multiply() {
-	let cache = {};
-	return function (x, y) {
-		if (cache[`${x} ${y}`]) {
-			console.log(`Already calculated Multiplication : ${cache[`${x} ${y}`]}`);
-			return cache[`${x} ${y}`];
-		}
-		const result = x * y;
-		cache[`${x} ${y}`] = result;
-		console.log(`multiply of ${x} ${y} is: ${result}`);
+// ! ------------------------------ add name
+function add() {
+	const arr = [];
+	return function inner(name) {
+		arr.push(name);
+		console.log(`Name are - ${arr} `);
+		return inner;
 	};
 }
-const memorizedX = multiply();
 
-memorizedX(5, 5);
-memorizedX(5, 5);
-memorizedX(5, 2);
-memorizedX(5, 6);
-memorizedX(2, 5);
+const addName = add();
+addName('Akshay')('Khurana')('Manisha')('Rahul');
