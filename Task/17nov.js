@@ -2,7 +2,7 @@ const countryData = (name) => {
 	const data = fetch(`https://restcountries.com/v3.1/name/${name}/`)
 		.then((data) => {
 			if (!data.ok) throw new Error('Something Went wrong');
-			data.json();
+			return data.json();
 		})
 		.then((country) => console.log(country[0].borders));
 };
@@ -10,8 +10,8 @@ const countryData = (name) => {
 const countryDataByAlpha = (name) => {
 	const data = fetch(`https://restcountries.com/v2/alpha/${name}/`)
 		.then((data) => {
-			if (!data.ok) throw new Error('Something Went wrong');
-			data.json();
+			if (!data.ok) throw new Error('Something Went wrong ');
+			return data.json();
 		})
 		.then((country) => console.log(country));
 };
