@@ -1,12 +1,40 @@
 // ! =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-Morning=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-// Object Methods
 // Object methods
-// object.create()
+// object.create() => This method is used to create a new object with the specified prototype object and properties.
+// Example----------------
+// const obj = Object.create({});
+// obj.name = 'Rahul';
+// obj.age = 18;
+// console.log(obj);
+
 // Object.assign()
+// This method is used to copy enumerable and own properties from a source object to a target object
+// const object1 = { a: 1, b: 2, c: 3 };
+// const object3 = { g: 1, h: 2, i: 3 };
+// const obj2 = Object.assign({ name: 'rahul' }, object3);
+// console.log(obj2);
+
 // Object.entries()
+// This method returns an array with arrays of the key, value pairs.
+// const object1 = { a: 1, b: 2, c: 3 };
+// console.log(Object.entries(object1)[0]);
+
 // Object.keys()
+// This method returns an array of a given object's keys
+// const object1 = { a: 1, b: 2, c: 3 };
+// console.log(Object.keys(object1));
+
 // Object.values()
+// returns an array of values.
+// const object1 = { a: 1, b: 2, c: 3 };
+// console.log(Object.values(object1));
+
 // Object.freeze()
+// prevents existing properties from being removed.
+// const object1 = { a: 1, b: 2, c: 3 };
+// const newObj = Object.freeze(object1);
+// object1.hello = 'bye';
+// console.log(newObj);
 
 // ! Work to Do
 //! task 1
@@ -31,6 +59,7 @@ const arr = [[1, 2], [2, 4, [5, 6, [2, 4]]], 8, 9];
 // 	console.log(arr.reduce((a,b) => {},[]));
 // }
 // flat(arr);
+
 // const a = arr.reduce((a, b) => {
 // 	return a, b;
 // }, []);
