@@ -34,13 +34,8 @@ const arr = [[1, 2], [2, 4, [5, 6, [2, 4]]], 8, 9];
 // const a = arr.reduce((a, b) => {
 // 	return a, b;
 // }, []);
-console.log(...arr);
 
 // task 3
 // a = [{name:'amit'}, {name: 'Akshay'}]
 // b = [{name: 'abcd'},{name:'abdc'}, {name:'kjdshck}, {name: 'Akshay'}, {name: 'akshay'}, {name:'AMit'}]
 // result = [{name: 'Akshay'}, {name: 'akshay'}, {name:'AMit'}]
-let a = 0;
-for (a; a < 5; a++) {
-	console.log(a);
-}
