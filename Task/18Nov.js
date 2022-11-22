@@ -75,16 +75,6 @@ let b = [
 
 // result = [{name: 'Akshay'}, {name: 'akshay'}, {name:'AMit'}]
 
-// let newObj = {};
-// a.map((x) => {
-// 	let value = x.name.toLowerCase();
-// 	newObj[value] = x.name.toLowerCase();
-// });
-// const filterName = b.filter((item) => {
-// 	let nameValue = item.name.toLowerCase();
-// 	return newObj[nameValue] ? item : null;
-// });
-
 let newObj = {};
 a.map((x) => {
 	let value = x.name.toLowerCase();
