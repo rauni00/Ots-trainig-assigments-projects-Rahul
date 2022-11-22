@@ -35,7 +35,7 @@
 // const newObj = Object.freeze(object1);
 // object1.hello = 'bye';
 // console.log(newObj);
-
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // ! Work to Do
 //! task 1
 let count = 0;
@@ -54,17 +54,45 @@ function onceCall() {
 // create a function to flat the array => [1,2,2,4,5,6,2,4,8,9]
 const arr = [[1, 2], [2, 4, [5, 6, [2, 4]]], 8, 9];
 
-// function flat(arr) {
-// 	// console.log(arr.filter((a) => {}));
-// 	console.log(arr.reduce((a,b) => {},[]));
-// }
-// flat(arr);
-
+// function flat(arr) {}
+// console.log(flat(arr));
+let flatArray = arr.reduce((acc, curVal) => {}, []);
+// console.log(flatArray);
 // const a = arr.reduce((a, b) => {
 // 	return a, b;
 // }, []);
 
 // task 3
-// a = [{name:'amit'}, {name: 'Akshay'}]
-// b = [{name: 'abcd'},{name:'abdc'}, {name:'kjdshck}, {name: 'Akshay'}, {name: 'akshay'}, {name:'AMit'}]
+let a = [{ name: 'amit' }, { name: 'Akshay' }];
+let b = [
+	{ name: 'abcd' },
+	{ name: 'abdc' },
+	{ name: 'kjdshck' },
+	{ name: 'Akshay' },
+	{ name: 'akshay' },
+	{ name: 'Amit' },
+];
+
 // result = [{name: 'Akshay'}, {name: 'akshay'}, {name:'AMit'}]
+
+// let newObj = {};
+// a.map((x) => {
+// 	let value = x.name.toLowerCase();
+// 	newObj[value] = x.name.toLowerCase();
+// });
+// const filterName = b.filter((item) => {
+// 	let nameValue = item.name.toLowerCase();
+// 	return newObj[nameValue] ? item : null;
+// });
+
+let newObj = {};
+a.map((x) => {
+	let value = x.name.toLowerCase();
+	newObj[value] = x.name.toLowerCase();
+});
+const filterName = b.filter((item) => {
+	let nameValue = item.name.toLowerCase();
+	return newObj[nameValue] ? item : null;
+});
+
+console.log(filterName);

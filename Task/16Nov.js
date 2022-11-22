@@ -16,7 +16,6 @@ setTimeout(() => {
 	console.log('Hello 5');
 }, 500);
 console.log('Hello 5');
-
 console.log('Bye!');
 
 //! ------------------------------------------after Noon-----------------------------------------------
