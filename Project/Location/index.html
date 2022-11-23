@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web API</title>
+</head>
+<style>
+    .cen {
+        text-align: center;
+        margin-top: 10%;
+    }
+    
+    p {
+        font-size: 34px;
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: bold;
+        background-color: black;
+        color: white;
+    }
+    
+    button {
+        font-size: 40px;
+        background-color: cyan;
+        font-weight: bold;
+        border-radius: 15px;
+    }
+    
+    button:hover {
+        background-color: brown;
+        border-color: blue;
+    }
+</style>
+
+<body>
+    <div class="cen">
+        <p id="show"></p>
+        <p id="Address"></p>
+        <button onclick="getLocation()">Get Location</button>
+    </div>
+</body>
+<script src="javas.js"></script>
+
+</html>
