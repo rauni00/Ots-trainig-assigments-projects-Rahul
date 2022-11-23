@@ -1,0 +1,17 @@
+body {
+    background-color: aliceblue;
+}
+
+.container {
+    border: 1px solid;
+    width: 30%;
+    height: 20vw;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.btn {
+    margin-top: 50%;
+    padding: 20px;
+}
