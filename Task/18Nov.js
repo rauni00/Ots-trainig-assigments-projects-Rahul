@@ -63,6 +63,7 @@ let flatArray = arr.reduce((acc, curVal) => {}, []);
 // }, []);
 
 // task 3
+
 let a = [{ name: 'amit' }, { name: 'Akshay' }];
 let b = [
 	{ name: 'abcd' },
@@ -76,13 +77,11 @@ let b = [
 // result = [{name: 'Akshay'}, {name: 'akshay'}, {name:'AMit'}]
 
 let newObj = {};
+
 a.map((x) => {
 	let value = x.name.toLowerCase();
-	newObj[value] = x.name.toLowerCase();
+	newObj[value] = value;
 });
-const filterName = b.filter((item) => {
-	let nameValue = item.name.toLowerCase();
-	return newObj[nameValue] ? item : null;
-});
+const filterName = b.filter((item) => {});
 
 console.log(filterName);
