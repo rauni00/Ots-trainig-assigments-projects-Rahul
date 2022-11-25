@@ -1,4 +1,10 @@
 .container {
-    padding: 5px;
-    margin: 5px;
+    width: 28%;
+    height: 19vw;
+    margin-left: 40%;
+    margin-right: auto;
+    border-color: rgb(193, 203, 214);
+    border-radius: 15px;
+    display: block;
+    margin-top: 10%;
 }

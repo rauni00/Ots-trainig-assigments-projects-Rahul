@@ -1,7 +1,7 @@
+let first = 0;
+let second = 0;
+let third = 0;
 function change(e) {
-	let first = 0;
-	let second = 0;
-	let third = 0;
 	if (e.target.name == 'first') {
 		first = e.target.value;
 	} else if (e.target.name == 'second') {
@@ -9,7 +9,7 @@ function change(e) {
 	} else if (e.target.name == 'third') {
 		third = e.target.value;
 	}
-	document.getElementById('start').style.color =
+	document.querySelector('body').style.backgroundColor =
 		'rgb(' + first + ',' + second + ',' + third + ')';
 }
 
