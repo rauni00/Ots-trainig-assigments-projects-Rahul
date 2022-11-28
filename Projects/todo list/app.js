@@ -1,39 +1,58 @@
-let button = document.getElementById('add');
 const arr = [];
-button.addEventListener('click', () => {
+function addItem() {
 	let val = document.getElementById('todoValue');
 	let value = val.value.trim();
 	if (value.length) {
 		let allList = document.querySelector('ul');
 		let list = document.createElement('li');
-		list.innerText = value;
-		arr.push(value);
-		// JSON.stringify(person);
-		localStorage.setItem('listItem', JSON.stringify(arr));
+		let del = document.createElement('span');
+		del.innerHTML = 'Delete Item';
+		del.style.color = 'red';
+		del.style.marginLeft = '20px';
+		del.style.cursor = 'pointer';
+		list.innerHTML = value;
+		list.addEventListener('click', () => {
+			if (list.style.backgroundColor == 'green') {
+				list.style.backgroundColor = 'white';
+			} else {
+				list.style.backgroundColor = 'green';
+			}
+		});
+		del.addEventListener('click', () => {
+			list.remove();
+		});
 		allList.appendChild(list);
+		list.appendChild(del);
+		arr.push(value);
 		document.getElementById('todoValue').value = '';
 	}
-});
-let button2 = document.getElementById('delete');
-button2.addEventListener('click', () => {
-	location.reload();
+}
+
+function deleteItem() {
 	let allList = document.querySelector('ul');
 	allList.innerHTML = '';
-	localStorage.removeItem('listItem');
-});
+}
 
-let button3 = document.getElementById('session');
-button3.addEventListener('click', () => {
-	sessionStorage.setItem('todoList', JSON.stringify(arr));
-});
+function persist() {
+	sessionStorage.setItem('listItem', JSON.stringify(arr));
+}
 
-window.addEventListener('load', () => {
-	let items = JSON.parse(localStorage.getItem('listItem'));
+window.onload = () => {
+	let items = JSON.parse(sessionStorage.getItem('listItem'));
 	arr.push(...items);
 	for (let i = 0; i < items.length; i++) {
 		let allList = document.querySelector('ul');
 		let list = document.createElement('li');
 		list.innerText = items[i];
 		allList.appendChild(list);
+		let del = document.createElement('span');
+		del.innerHTML = 'Delete Item';
+		del.style.color = 'red';
+		del.style.marginLeft = '20px';
+		del.style.cursor = 'pointer';
+		list.appendChild(del);
+		list.addEventListener('click', () => {
+			list.remove();
+		});
 	}
-});
+};
