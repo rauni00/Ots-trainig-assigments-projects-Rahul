@@ -2,7 +2,7 @@ let button = document.getElementById('add');
 const arr = [];
 button.addEventListener('click', () => {
 	let val = document.getElementById('todoValue');
-	let value = val.value;
+	let value = val.value.trim();
 	if (value.length) {
 		let allList = document.querySelector('ul');
 		let list = document.createElement('li');
@@ -14,13 +14,12 @@ button.addEventListener('click', () => {
 		document.getElementById('todoValue').value = '';
 	}
 });
-// window.addEventListener('pa');
 let button2 = document.getElementById('delete');
 button2.addEventListener('click', () => {
 	location.reload();
-
 	let allList = document.querySelector('ul');
 	allList.innerHTML = '';
+	localStorage.removeItem('listItem');
 });
 
 let button3 = document.getElementById('session');
@@ -38,5 +37,3 @@ window.addEventListener('load', () => {
 		allList.appendChild(list);
 	}
 });
-
-console.log(arr);

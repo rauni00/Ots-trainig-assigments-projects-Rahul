@@ -1,0 +1,17 @@
+body {
+    background: #212121;
+}
+
+.clock {
+    position: absolute;
+    color: #60c048;
+    font-size: 40px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h1 {
+    color: white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
