@@ -36,6 +36,7 @@ function deleteItem() {
 function persist() {
 	sessionStorage.setItem('listItem', JSON.stringify(arr));
 }
+
 window.onload = () => {
 	let items = JSON.parse(sessionStorage.getItem('listItem'));
 	arr.push(...items);

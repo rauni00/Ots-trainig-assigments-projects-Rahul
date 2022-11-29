@@ -1,0 +1,103 @@
+/*// BASE STYLES //*/
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+}
+
+.grass,
+.sky,
+.road {
+    position: relative;
+}
+
+.sky {
+    height: 40%;
+    background: skyblue;
+}
+
+.grass {
+    height: 30%;
+    background: seagreen;
+}
+
+.road {
+    height: 30%;
+    background: dimgrey;
+    box-sizing: border-box;
+    border-top: 10px solid grey;
+    border-bottom: 10px solid grey;
+    width: 100%;
+}
+
+.lines {
+    box-sizing: border-box;
+    border: 5px dashed #fff;
+    height: 0px;
+    width: 100%;
+    position: absolute;
+    top: 45%;
+}
+
+
+/*// ELEMENTS TO ANIMATE //*/
+
+.mario {
+    position: absolute;
+    top: -40px;
+}
+
+
+/*// KEYFRAMES //*/
+
+.cloud {
+    animation: mymove 5s infinite;
+}
+
+.cloud2 {
+    transform: scale(0.4);
+}
+
+@keyframes mymove {
+    0% {
+        transform: translateX(100px);
+    }
+    100% {
+        transform: translateX(1500px) scale(0.5);
+    }
+}
+
+@keyframes marioMove {
+    0% {
+        transform: translate(0px);
+    }
+    50% {
+        transform: translate(300px, -200px) rotate(-360deg) scale(0.7);
+    }
+    75% {
+        transform: translate(600px, 0px) scale(0.9);
+    }
+    100% {
+        transform: translateX(1500px);
+    }
+}
+
+@keyframes RoadMove {
+    0% {
+        transform: translate(1000px);
+    }
+    100% {
+        transform: translateX(-1000px);
+    }
+}
+
+.mario {
+    animation: marioMove 4s infinite;
+}
+
+.lines {
+    animation: RoadMove 4s infinite;
+}
