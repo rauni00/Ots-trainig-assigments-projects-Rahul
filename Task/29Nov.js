@@ -2,9 +2,6 @@
 let ul = document.querySelector('ul');
 
 ul.addEventListener('click', (e) => {
-	// e.target.style.backgroundColor = 'red';
-
-	// alert(e.target.innerHTML);
 	if (e.target.style.backgroundColor == 'red') {
 		e.target.style.backgroundColor = 'white';
 	} else {

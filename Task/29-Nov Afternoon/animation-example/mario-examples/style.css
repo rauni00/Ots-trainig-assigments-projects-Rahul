@@ -1,5 +1,3 @@
-/*// BASE STYLES //*/
-
 html,
 body {
     height: 100%;
@@ -42,16 +40,10 @@ body {
     top: 45%;
 }
 
-
-/*// ELEMENTS TO ANIMATE //*/
-
 .mario {
     position: absolute;
     top: -40px;
 }
-
-
-/*// KEYFRAMES //*/
 
 .cloud {
     animation: mymove 5s infinite;
@@ -87,15 +79,15 @@ body {
 
 @keyframes RoadMove {
     0% {
-        transform: translate(1000px);
+        transform: translate(1500px);
     }
     100% {
-        transform: translateX(-1000px);
+        transform: translateX(-1500px);
     }
 }
 
 .mario {
-    animation: marioMove 4s infinite;
+    animation: marioMove 3s infinite;
 }
 
 .lines {
