@@ -1,12 +1,12 @@
 import React from 'react';
 const ListItem = (props) => {
-	const arr = [];
-	arr.push(props.item);
 	return (
 		<div>
 			<ul>
-				{arr.map((item) => (
-					<li>{item}</li>
+				{props.arr.map((item, i) => (
+					<li key={i}>
+						{item} {i}
+					</li>
 				))}
 			</ul>
 		</div>
