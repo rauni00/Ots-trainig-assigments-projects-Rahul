@@ -4,9 +4,7 @@ const ListItem = (props) => {
 		<div>
 			<ul>
 				{props.arr.map((item, i) => (
-					<li key={i}>
-						{item} {i}
-					</li>
+					<li key={i}>{item}</li>
 				))}
 			</ul>
 		</div>

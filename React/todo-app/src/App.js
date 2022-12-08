@@ -1,9 +1,10 @@
 import './App.css';
-import Form from './Components/Form';
+import React from 'react';
+import Main from './TodoForDish/Main';
 function App() {
 	return (
 		<div>
-			<Form />
+			<Main />
 		</div>
 	);
 }

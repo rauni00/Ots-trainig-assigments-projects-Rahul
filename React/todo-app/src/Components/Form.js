@@ -1,18 +1,22 @@
 import React, { useState } from 'react';
+import Button from './Button';
 import ListItem from './ListItem';
 
 const Form = () => {
 	const [Item, setItem] = useState('');
 	const [Items, setItems] = useState([]);
 	const addItem = () => {
-		setItems((prevArray) => [...prevArray, Item]);
+		if (Item) {
+			setItems((prevValue) => [...prevValue, Item]);
+			setItem('');
+		}
 	};
 	return (
 		<div>
-			<input type="text" name="item" onChange={(e) => setItem(e.target.value)} />
-			{/* <button type="submit" onClick={addItem}> */}
-			<input type="button" onClick={addItem} value="Submit" />
-
+			<input type="text" value={Item} onChange={(e) => setItem(e.target.value)} />
+			<Button add={addItem} color="cyan" radius="15px" padding="10px" />
+			{/* <Button add={addItem} color="rbg(200,0,155)" radius="20px" padding="30px" />
+			<Button add={addItem} color="cyan" radius="15px" padding="10px" /> */}
 			<ListItem arr={Items} />
 		</div>
 	);

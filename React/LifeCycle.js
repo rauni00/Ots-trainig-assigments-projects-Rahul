@@ -6,3 +6,5 @@
 
 // static getDeriverFromProps
 // => initially one state is there and in the getDeriverFromProps have a return type
+
+// <></> React Fragment
