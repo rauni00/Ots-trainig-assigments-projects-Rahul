@@ -1,19 +1,29 @@
 import React from 'react';
+import { Segment } from 'semantic-ui-react';
 
 export default function ListInDetails({ item }) {
+	const styles = {
+		fontSize: 20,
+		margin: 20,
+		padding: 10,
+	};
 	return (
-		<div>
-			<div>
-				<span>Food Name : </span> {item.foodName}
-			</div>
-			<div>
-				<span>Chief Name : </span>
-				{item.chiefName}
-			</div>
-			<div>
-				<span>Description : </span>
-				{item.Desc}
-			</div>
-		</div>
+		<>
+			{Object.keys(item).length !== 0 ? (
+				<Segment>
+					<div style={styles}>
+						<div>
+							Food Name : <span>{item.foodName}</span>
+						</div>
+						<div>
+							Chief Name : <span>{item.chiefName}</span>
+						</div>
+						<div>
+							Description : <span>{item.Desc}</span>
+						</div>
+					</div>
+				</Segment>
+			) : null}
+		</>
 	);
 }

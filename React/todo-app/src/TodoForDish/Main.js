@@ -23,15 +23,11 @@ export default function Main() {
 						</Segment>
 					</Grid.Row>
 					<Grid.Row>
-						<Segment>
-							<ListView arr={arr} details={detailsView} />
-						</Segment>
+						<ListView arr={arr} details={detailsView} />
 					</Grid.Row>
 				</Grid.Column>
 				<Grid.Column>
-					<Segment>
-						<ListInDetails item={item} />
-					</Segment>
+					<ListInDetails item={item} />
 				</Grid.Column>
 			</Grid.Row>
 		</Grid>

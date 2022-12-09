@@ -3,11 +3,11 @@ import { Button, Form } from 'semantic-ui-react';
 
 export default function InputForm({ addToList }) {
 	const addDish = (e) => {
-		let data = new FormData(e.target);
+		let form = new FormData(e.target);
 		const details = {
-			foodName: data.get('foodName'),
-			chiefName: data.get('chiefName'),
-			Desc: data.get('Desc'),
+			foodName: form.get('foodName'),
+			chiefName: form.get('chiefName'),
+			Desc: form.get('Desc'),
 		};
 		addToList(details);
 	};
