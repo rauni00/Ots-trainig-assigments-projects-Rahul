@@ -8,7 +8,9 @@ export default function Main() {
 	const [arr, setArr] = useState([]);
 	const [item, setItem] = useState({});
 	const add = (item) => {
+		// if (!item) {
 		setArr((pre) => [...pre, item]);
+		// }
 	};
 	const detailsView = (oneItem) => {
 		setItem({ ...oneItem });

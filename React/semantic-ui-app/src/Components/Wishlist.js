@@ -1,22 +1,9 @@
-import React, { useState } from 'react';
-import { Grid, Image, Icon } from 'semantic-ui-react';
+import React from 'react';
+import { Grid, Image } from 'semantic-ui-react';
 // import { Card, Icon } from 'semantic-ui-react';
 import Data from './Data';
-
+import Like from './Like';
 const Wishlist = () => {
-	const [heart, setHeart] = useState(false);
-	console.log(Data);
-	let icon = (
-		<>
-			<Icon
-				style={{ color: heart ? 'red' : 'black' }}
-				name="heart"
-				onClick={() => {
-					setHeart(!heart);
-				}}
-			/>
-		</>
-	);
 	return (
 		<div style={{ margin: 20 }}>
 			<Grid columns={3} divided>
@@ -24,13 +11,14 @@ const Wishlist = () => {
 					<>
 						<Grid.Row>
 							<Grid.Column>
+								<Like />
 								<Image
 									style={{ width: 150, height: 'auto' }}
 									src={item.image}
 								/>
 							</Grid.Column>
 							<Grid.Column>
-								<span style={{ color: 'green', fontSize: 15 }}>
+								<span style={{ color: 'green', fontSize: 20 }}>
 									{item.name}
 								</span>
 								<ul>
@@ -49,7 +37,16 @@ const Wishlist = () => {
 							<Grid.Column>
 								<span style={{ fontSize: 20 }}>
 									{'\u20B9'}
-									{item.price}
+									{item.price}{' '}
+									<sup style={{ color: 'green', fontSize: 12 }}>
+										2000 off
+									</sup>
+									<div style={{ fontSize: 15 }}>
+										<strike>
+											{'\u20B9'}
+											{item.price - 2000}
+										</strike>
+									</div>
 								</span>
 							</Grid.Column>
 						</Grid.Row>
