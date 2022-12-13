@@ -1,37 +1,47 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'semantic-ui-react';
 
-export default function InputForm({ addToList }) {
-	let foodName = useRef();
-	let chiefName = useRef();
-	let Desc = useRef();
-	const addDish = () => {
-		// isGirlsAllowed && isBoysAllowed && setPersonDetailsData(personDetails);
-		// isBoysAllowed && setPersonDetailsData(onlyBoysAllowed);
-		// !isBoysAllowed && setPersonDetailsData(onlyGirlsAllowed);
+export default function InputForm({ addToList, btnName, oneItem }) {
+	const [list, setList] = useState({
+		foodName: '',
+		chiefName: '',
+		Desc: '',
+		id: '',
+	});
 
-		let details = {
-			foodName: foodName.current.value,
-			chiefName: chiefName.current.value,
-			Desc: Desc.current.value,
-		};
-		if (Object.keys(details) !== '') {
-			addToList(details);
-		}
+	useEffect(() => {
+		setList({ ...oneItem });
+	}, [oneItem]);
+
+	const change = (e) => {
+		const { name, value } = e.target;
+		setList((prevState) => ({
+			...prevState,
+			[name]: value,
+		}));
+	};
+
+	const onSubmit = () => {
+		addToList(list);
+		setList({
+			foodName: '',
+			chiefName: '',
+			Desc: '',
+		});
 	};
 	return (
-		<Form onSubmit={addDish} style={{ margin: 10 }}>
+		<Form onSubmit={onSubmit} style={{ margin: 10 }}>
 			<Form.Field>
-				<input placeholder="Food Name" ref={foodName} name="foodName" />
+				<input placeholder="Food Name" value={list.foodName} name="foodName" onChange={change} required />
 			</Form.Field>
 			<Form.Field>
-				<input placeholder="Chief Name" ref={chiefName} name="chiefName" />
+				<input placeholder="Chief Name" name="chiefName" value={list.chiefName} onChange={change} required />
 			</Form.Field>
 			<Form.Field>
-				<textarea placeholder="Description" ref={Desc} name="Desc" />
+				<textarea placeholder="Description" name="Desc" value={list.Desc} onChange={change} required />
 			</Form.Field>
 			<Button type="submit" primary>
-				Submit
+				{btnName}
 			</Button>
 		</Form>
 	);

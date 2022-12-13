@@ -1,7 +1,7 @@
 import React from 'react';
-import { Segment, Icon } from 'semantic-ui-react';
+import { Segment, Icon, Button } from 'semantic-ui-react';
 
-export default function ListView({ arr, details }) {
+export default function ListView({ arr, details, deleteOne, edit }) {
 	return (
 		<>
 			{arr.length !== 0 ? (
@@ -12,12 +12,29 @@ export default function ListView({ arr, details }) {
 						</h3>
 						{arr.map((item) => (
 							<div key={item}>
-								<div
-									style={{ fontSize: 18, cursor: 'pointer' }}
-									onClick={() => details(item)}
-								>
+								<div>
 									<ul>
-										<li>{item.foodName}</li>
+										<li>
+											<span
+												style={{
+													fontSize: 18,
+													cursor: 'pointer',
+													margin: 10,
+												}}
+												onClick={() => details(item)}
+											>
+												{item.foodName}
+											</span>
+											<span style={{ margin: 10, padding: 10 }}>
+												<Button size="mini" color="blue" onClick={() => edit(item)}>
+													<Icon name="edit" /> Edit
+												</Button>
+												<Button onClick={() => deleteOne(item.id)} color="red" size="mini">
+													<Icon name="delete" /> Delete
+												</Button>
+												<Icon name="heart outlet" size="large" />
+											</span>
+										</li>
 									</ul>
 								</div>
 							</div>
