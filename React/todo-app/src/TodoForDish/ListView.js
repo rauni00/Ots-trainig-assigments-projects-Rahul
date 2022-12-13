@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Segment, Icon, Button } from 'semantic-ui-react';
+import GlobalContext from './GlobalContext';
+import Wishlist from './Wishlist';
 
 export default function ListView({ arr, details, deleteOne, edit }) {
+	const [value, setValue] = useState('');
 	return (
 		<>
-			{arr.length !== 0 ? (
+			{arr.length !== 0 && (
 				<Segment>
-					<div style={{ margin: 15, marginTop: 10 }}>
+					<div style={{ margin: 10, marginTop: 10 }}>
 						<h3 style={{ color: 'green' }}>
 							FOOD NAME <Icon name="food" />
 						</h3>
@@ -32,7 +35,20 @@ export default function ListView({ arr, details, deleteOne, edit }) {
 												<Button onClick={() => deleteOne(item.id)} color="red" size="mini">
 													<Icon name="delete" /> Delete
 												</Button>
-												<Icon name="heart outlet" size="large" />
+												<GlobalContext.Provider value={value}>
+													<Icon
+														onClick={() => setValue(item.foodName)}
+														name="heart"
+														size="large"
+														style={{
+															cursor: 'pointer',
+															'&:hover': {
+																backgroundColor: '#efefef',
+															},
+														}}
+													/>
+													<Wishlist />
+												</GlobalContext.Provider>
 											</span>
 										</li>
 									</ul>
@@ -41,7 +57,7 @@ export default function ListView({ arr, details, deleteOne, edit }) {
 						))}
 					</div>
 				</Segment>
-			) : null}
+			)}
 		</>
 	);
 }

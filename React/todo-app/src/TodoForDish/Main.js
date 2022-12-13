@@ -1,30 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Grid, Segment } from 'semantic-ui-react';
 import InputForm from './InputForm';
 import ListInDetails from './ListInDetails';
 import ListView from './ListView';
 import { v4 as uuidv4 } from 'uuid';
-
+import Wishlist from './Wishlist';
 export default function Main() {
 	const [arr, setArr] = useState([]);
 	const [item, setItem] = useState({});
 	const [forEdit, setForEdit] = useState({});
-	const [edit, setEdit] = useState(false);
+	const [editForm, setEditForm] = useState(false);
 
-	useEffect(() => {}, []);
 	const add = (item) => {
 		let data = { ...item, id: uuidv4() };
 		setArr((pre) => [...pre, data]);
-	};
-	const editItem = (item) => {
-		const editedArray = arr.map((curr) => {
-			if (curr.id === item.id) {
-				return { ...item };
-			}
-			return curr;
-		});
-		setArr(editedArray);
-		setEdit(!edit);
 	};
 
 	const detailsView = (oneItem) => {
@@ -40,18 +29,35 @@ export default function Main() {
 		setArr(filterArray);
 	};
 
+	const editItem = (item) => {
+		const editedArray = arr.map((curr) => {
+			if (curr.id === item.id) {
+				return { ...item };
+			}
+			return curr;
+		});
+		setArr(editedArray);
+		setEditForm(!editForm);
+	};
+
 	const editView = (item) => {
-		setEdit(true);
+		setEditForm(true);
 		setForEdit({ ...item });
 	};
+
 	return (
 		<Grid divided="vertically">
 			<Grid.Row columns={2}>
 				<Grid.Column>
 					<Grid.Row>
 						<Segment>
-							{edit ? (
-								<InputForm addToList={editItem} btnName="Update" oneItem={forEdit} />
+							{editForm ? (
+								<InputForm
+									addToList={editItem}
+									btnName="Update"
+									oneItem={forEdit}
+									cancel={() => setEditForm(false)}
+								/>
 							) : (
 								<InputForm addToList={add} btnName="Submit" />
 							)}
@@ -63,6 +69,7 @@ export default function Main() {
 				</Grid.Column>
 				<Grid.Column>
 					<ListInDetails item={item} />
+					<Wishlist />
 				</Grid.Column>
 			</Grid.Row>
 		</Grid>

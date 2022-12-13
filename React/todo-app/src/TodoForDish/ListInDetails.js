@@ -9,7 +9,7 @@ export default function ListInDetails({ item }) {
 	};
 	return (
 		<>
-			{Object.keys(item).length !== 0 ? (
+			{Object.keys(item).length !== 0 && (
 				<Segment>
 					<h1>
 						<Icon name="food" /> Food Description
@@ -26,7 +26,7 @@ export default function ListInDetails({ item }) {
 						</div>
 					</div>
 				</Segment>
-			) : null}
+			)}
 		</>
 	);
 }
