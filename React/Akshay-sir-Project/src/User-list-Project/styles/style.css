@@ -6,3 +6,19 @@
     background-color: rgb(206, 206, 206);
     cursor: pointer;
 }
+
+.deleteItem {
+    color: 'black';
+}
+
+.deleteItem:hover {
+    color: rgb(228, 67, 67);
+}
+
+.edit {
+    color: 'black';
+}
+
+.edit:hover {
+    color: cornflowerblue;
+}

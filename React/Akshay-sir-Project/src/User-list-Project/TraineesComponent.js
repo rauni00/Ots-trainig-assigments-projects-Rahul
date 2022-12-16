@@ -1,18 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import { Header, Input, Button, Dropdown } from 'semantic-ui-react';
 import TraineesList from './TraineesList';
 import UsersData from './UsersData';
-import { editedContext } from './EditDetails';
+export const EditedContext = createContext();
 const TraineesComponent = () => {
-	const edited = useContext(editedContext);
 	const [searchTerm, setSearchTerm] = useState('');
 	const [name, setName] = useState('');
 	const [traineesList, setTraineesList] = useState([]);
 	const [searchedTraineesList, setSearchedTraineesList] = useState([]);
-
-	useEffect(() => {
-		console.log(edited);
-	}, [edited]);
 
 	const options = [
 		{
@@ -82,6 +77,16 @@ const TraineesComponent = () => {
 		setTraineesList(deleteItem);
 	};
 
+	const getEditedData = (item) => {
+		const actualData = searchedTraineesList.map((list, i) => {
+			if (item.id === i) {
+				return { ...item };
+			} else return list;
+		});
+		setSearchedTraineesList(actualData);
+		setTraineesList(actualData);
+		// console.log(actualData);
+	};
 	return (
 		<>
 			<Header as="h1">Trainees</Header>
@@ -115,7 +120,9 @@ const TraineesComponent = () => {
 			</div>
 
 			<div style={{ margin: '1rem' }}>
-				<TraineesList deleteItems={deleteItems} trainees={searchTerm === '' ? traineesList : searchedTraineesList} />
+				<EditedContext.Provider value={getEditedData}>
+					<TraineesList deleteItems={deleteItems} trainees={searchTerm === '' ? traineesList : searchedTraineesList} />
+				</EditedContext.Provider>
 			</div>
 		</>
 	);

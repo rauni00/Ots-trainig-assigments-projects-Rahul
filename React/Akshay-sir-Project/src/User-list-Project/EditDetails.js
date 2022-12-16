@@ -1,9 +1,9 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Button, Form, Segment } from 'semantic-ui-react';
-import TraineesComponent from './TraineesComponent';
-export const editedContext = createContext();
-const EditDetails = ({ item }) => {
+import { EditedContext } from './TraineesComponent';
+const EditDetails = ({ item, cancel }) => {
 	const [data, setData] = useState({ firstName: '', lastName: '', gender: '', id: null });
+	const edited = useContext(EditedContext);
 	useEffect(() => {
 		setData({ ...item });
 	}, [item]);
@@ -17,12 +17,12 @@ const EditDetails = ({ item }) => {
 	};
 	const submit = (e) => {
 		e.preventDefault();
+		setData(data);
+		edited(data);
+		cancel();
 	};
 	return (
 		<div>
-			<editedContext.Provider value={data}>
-				<TraineesComponent />
-			</editedContext.Provider>
 			<Segment style={{ width: '25%' }} size="mini">
 				<h3>Edit Details</h3>
 				<Form size="small" onSubmit={submit}>
@@ -38,9 +38,11 @@ const EditDetails = ({ item }) => {
 						<option value="Female">Female</option>
 						<option value="Other">Other</option>
 					</select>
-
 					<br />
 					<Button type="submit">Submit</Button>
+					<Button color="red" onClick={cancel}>
+						Cancel
+					</Button>
 				</Form>
 			</Segment>
 		</div>

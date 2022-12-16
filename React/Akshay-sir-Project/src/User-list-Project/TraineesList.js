@@ -9,9 +9,10 @@ const TraineesList = (props) => {
 		setForEdit({ id: index, ...trainee });
 		setIsEdit(!isEdit);
 	};
+
 	return (
 		<>
-			{isEdit && <EditDetails item={forEdit} />}
+			{isEdit && <EditDetails item={forEdit} cancel={() => setIsEdit(!isEdit)} />}
 			{props.trainees.length > 0 && (
 				<Table fixed>
 					<Table.Header>
@@ -45,14 +46,17 @@ const TraineesList = (props) => {
 										)}
 										<Table.Cell>
 											<Icon
+												className="edit"
 												name="edit"
-												size="big"
+												size="large"
 												onClick={() => {
 													edit(index, trainee);
 												}}
 											/>
 											<Icon
+												className="deleteItem"
 												name="user delete"
+												size="large"
 												onClick={() => {
 													props.deleteItems(index);
 												}}
