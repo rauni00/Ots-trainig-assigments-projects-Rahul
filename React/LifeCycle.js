@@ -10,3 +10,7 @@
 // <></> React Fragment
 
 // useMemo => It help to not re-render the child component when parent re-render
+
+// React seducing
+// context api=>props drilling
+// Custom Hook
