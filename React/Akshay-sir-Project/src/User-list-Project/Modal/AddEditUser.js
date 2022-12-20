@@ -45,7 +45,7 @@ const AddEditUser = ({ item, btnName, name, size, title }) => {
 							{/* {title === 'Add User'} */}
 							<input
 								placeholder="Email"
-								name="Email"
+								name="email"
 								value={data.email}
 								onChange={change}
 								required

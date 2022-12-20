@@ -70,6 +70,7 @@ const TraineesComponent = () => {
 
 	const getEditedData = (item) => {
 		if (item.index === undefined) {
+			console.log(item);
 			setTraineesList((pre) => [...pre, item]);
 		} else {
 			const actualData = searchedTraineesList.map((list, i) => {
