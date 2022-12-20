@@ -6,11 +6,10 @@ const MenuBar = () => {
 	const [active, setActive] = useState('Home');
 	return (
 		<div>
-			<Menu>
+			<Menu inverted size="large">
 				<Menu.Item active={active === 'Home' ? active : !active} as={Link} name="Home" to="/" onClick={() => setActive('Home')}>
 					Home
 				</Menu.Item>
-
 				<Menu.Item
 					active={active === 'Services' ? active : !active}
 					as={Link}
@@ -20,7 +19,6 @@ const MenuBar = () => {
 				>
 					Services
 				</Menu.Item>
-
 				<Menu.Item
 					active={active === 'contactus' ? active : !active}
 					as={Link}
@@ -30,7 +28,6 @@ const MenuBar = () => {
 				>
 					Contact Us
 				</Menu.Item>
-
 				<Menu.Item
 					active={active === 'Trainees' ? active : !active}
 					as={Link}

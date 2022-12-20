@@ -24,9 +24,9 @@ module.exports = [
 		gender: 'Male',
 	},
 	{
-		firstName: 'Arun',
-		lastName: 'Kumar',
-		email: 'ehtesham@otssolutions.com',
+		firstName: 'Rahul',
+		lastName: 'Rauniyar',
+		email: 'rahul@otssolutions.com',
 		gender: 'Male',
 	},
 	{
@@ -50,7 +50,7 @@ module.exports = [
 	{
 		firstName: 'Arun',
 		lastName: 'Kumar',
-		email: 'ehtesham@otssolutions.com',
+		email: 'arun@otssolutions.com',
 		gender: 'Male',
 	},
 
@@ -63,13 +63,13 @@ module.exports = [
 	{
 		firstName: 'Hrishikesh',
 		lastName: 'Bhagat',
-		email: 'ehtesham@otssolutions.com',
+		email: 'hrishikesh@otssolutions.com',
 		gender: 'Male',
 	},
 	{
 		firstName: 'Arun',
 		lastName: 'Kumar',
-		email: 'ehtesham@otssolutions.com',
+		email: 'arun@otssolutions.com',
 		gender: 'Male',
 	},
 ];

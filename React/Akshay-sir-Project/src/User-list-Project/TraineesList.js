@@ -1,19 +1,16 @@
-import React, { useState } from 'react';
-import { Table, Icon } from 'semantic-ui-react';
+import React from 'react';
+import { Table, Icon, Button } from 'semantic-ui-react';
 import './styles/style.css';
-import EditDetails from './EditDetails';
-const TraineesList = (props) => {
-	const [forEdit, setForEdit] = useState(null);
-	const [isEdit, setIsEdit] = useState(false);
-	const edit = (index, trainee) => {
-		setForEdit({ id: index, ...trainee });
-		setIsEdit(!isEdit);
-	};
-
+import UserDelete from './Modal/UserDelete';
+import AddEditUser from './Modal/AddEditUser';
+const TraineesList = ({ trainees }) => {
 	return (
 		<>
-			{isEdit && <EditDetails item={forEdit} cancel={() => setIsEdit(!isEdit)} />}
-			{props.trainees.length > 0 && (
+			<Button size="small">
+				<AddEditUser name="add" size="large" btnName="Add User" title="Add User" />
+				Add User
+			</Button>
+			{trainees.length > 0 && (
 				<Table fixed>
 					<Table.Header>
 						<Table.Row positive>
@@ -24,10 +21,10 @@ const TraineesList = (props) => {
 						</Table.Row>
 					</Table.Header>
 
-					{props.trainees.length > 0 &&
-						props.trainees.map((trainee, index) => {
+					{trainees.length > 0 &&
+						trainees.map((trainee, index) => {
 							return (
-								<Table.Body key={index} style={{}}>
+								<Table.Body key={index}>
 									<Table.Row className="list">
 										<Table.Cell style={{ fontWeight: 'bold' }}>
 											{trainee.firstName} {trainee.lastName}
@@ -45,22 +42,16 @@ const TraineesList = (props) => {
 											</Table.Cell>
 										)}
 										<Table.Cell>
-											<Icon
-												className="edit"
-												name="edit"
-												size="large"
-												onClick={() => {
-													edit(index, trainee);
-												}}
-											/>
-											<Icon
-												className="deleteItem"
-												name="user delete"
-												size="large"
-												onClick={() => {
-													props.deleteItems(index);
-												}}
-											/>
+											<div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+												<AddEditUser
+													item={{ index: index, ...trainee }}
+													btnName="Update"
+													name="edit"
+													size="large"
+													title="Edit User"
+												/>
+												<UserDelete trainee={{ index: index, ...trainee }} />
+											</div>
 										</Table.Cell>
 									</Table.Row>
 								</Table.Body>
@@ -68,7 +59,7 @@ const TraineesList = (props) => {
 						})}
 				</Table>
 			)}
-			<div>{props.trainees.length === 0 && <div>No Data Found!</div>}</div>
+			<div>{trainees.length === 0 && <div>No Data Found!</div>}</div>
 		</>
 	);
 };

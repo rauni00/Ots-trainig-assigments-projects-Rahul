@@ -1,7 +1,8 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { Header, Input, Button, Dropdown } from 'semantic-ui-react';
+import { Header, Input, Button, Dropdown, Popup } from 'semantic-ui-react';
 import TraineesList from './TraineesList';
 import UsersData from './UsersData';
+// import AddEditUser from './Modal/AddEditUser';
 export const EditedContext = createContext();
 const TraineesComponent = () => {
 	const [searchTerm, setSearchTerm] = useState('');
@@ -32,60 +33,53 @@ const TraineesComponent = () => {
 			setSearchedTraineesList(filteredData);
 		}
 	}, [searchTerm]);
+
 	useEffect(() => {
+		let ascending = UsersData.sort((a, b) => {
+			let fa = a.firstName;
+			let fb = b.firstName;
+			if (fa < fb) {
+				return -1;
+			}
+			if (fa > fb) {
+				return 1;
+			}
+			return 0;
+		});
 		if (name === 'ascending') {
-			let ascending = UsersData.sort((a, b) => {
-				let fa = a.firstName;
-				let fb = b.firstName;
-				if (fa < fb) {
-					return -1;
-				}
-				if (fa > fb) {
-					return 1;
-				}
-				return 0;
-			});
+			console.log(ascending);
 			setSearchedTraineesList(ascending);
 			setName('');
 		} else if (name === 'descending') {
-			let descending = UsersData.sort((a, b) => {
-				let fa = a.firstName;
-				let fb = b.firstName;
-				if (fa < fb) {
-					return 1;
-				}
-				if (fa > fb) {
-					return -1;
-				}
-				return 0;
-			});
-			setSearchedTraineesList(descending);
+			setSearchedTraineesList(ascending.reverse());
 			setName('');
-		} else {
-			setSearchedTraineesList(UsersData);
 		}
 	}, [name]);
 
-	const deleteItems = (index) => {
-		const deleteItem = searchedTraineesList.filter((item, i) => {
-			if (index === i) {
+	const deleteItems = (items) => {
+		const deleteItem = traineesList.filter((item, i) => {
+			if (items.index === i) {
 				return false;
+			} else {
+				return true;
 			}
-			return true;
 		});
 		setSearchedTraineesList(deleteItem);
 		setTraineesList(deleteItem);
 	};
 
 	const getEditedData = (item) => {
-		const actualData = searchedTraineesList.map((list, i) => {
-			if (item.id === i) {
-				return { ...item };
-			} else return list;
-		});
-		setSearchedTraineesList(actualData);
-		setTraineesList(actualData);
-		// console.log(actualData);
+		if (item.index === undefined) {
+			setTraineesList((pre) => [...pre, item]);
+		} else {
+			const actualData = searchedTraineesList.map((list, i) => {
+				if (item.index === i) {
+					return { ...item };
+				} else return list;
+			});
+			setSearchedTraineesList(actualData);
+			setTraineesList(actualData);
+		}
 	};
 	return (
 		<>
@@ -95,33 +89,42 @@ const TraineesComponent = () => {
 					display: 'flex',
 					justifyContent: 'flex-end',
 					marginRight: '1rem',
+					padding: 0,
 				}}
 			>
-				<Input
-					style={{ width: '25rem' }}
-					icon={{ name: 'search', circular: true, link: true }}
-					placeholder="Search Name"
-					onChange={(e) => setSearchTerm(e.target.value)}
+				<Popup
+					trigger={
+						<Input
+							style={{ width: '15rem', margin: 5 }}
+							icon={{ name: 'search', circular: true, link: true }}
+							placeholder="Search Name"
+							onChange={(e) => setSearchTerm(e.target.value)}
+						/>
+					}
+					content="You may search by Name"
+					on="focus"
 				/>
-				<div>
-					<Button.Group color="blue" style={{ marginLeft: '1rem' }}>
+				<div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+					<Button.Group color="blue" style={{ margin: 5 }}>
 						<Button>Sort</Button>
 						<Dropdown
-							className="button icon"
-							floating
+							className="button"
+							icon={name === 'ascending' ? 'angle up' : ' angle down'}
 							options={options}
-							onChange={(e, { value }) => {
-								setName(value);
-							}}
+							onChange={(e, { value }) => setName(value)}
 							trigger={<></>}
 						/>
 					</Button.Group>
+					{/* <Button size="small">
+						<AddEditUser name="add" size="large" btnName="Add User" title="Add User" />
+						Add User
+					</Button> */}
 				</div>
 			</div>
 
 			<div style={{ margin: '1rem' }}>
-				<EditedContext.Provider value={getEditedData}>
-					<TraineesList deleteItems={deleteItems} trainees={searchTerm === '' ? traineesList : searchedTraineesList} />
+				<EditedContext.Provider value={[getEditedData, deleteItems]}>
+					<TraineesList trainees={searchTerm === '' ? traineesList : searchedTraineesList} />
 				</EditedContext.Provider>
 			</div>
 		</>

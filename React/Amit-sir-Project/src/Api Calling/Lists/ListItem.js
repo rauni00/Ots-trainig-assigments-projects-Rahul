@@ -1,13 +1,13 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
-// import App from '../../App';
-// export const heightContext = useContext();
+import { HeightContext } from '../Index';
 export default function ListItem({ item }) {
 	const [details, setDetails] = useState(null);
+	const heightValue = useContext(HeightContext);
 	const getPokemonDetail = async () => {
 		try {
 			const { data } = await axios.get(item.url);
-			console.log(data);
+			heightValue(data);
 			let weight = data.weight;
 			let height = data.height;
 			setDetails({ weight, height });
@@ -31,9 +31,10 @@ export default function ListItem({ item }) {
 					margin: '4px',
 				}}
 			>
+				{}
 				<div>Name: {item.name.toUpperCase()}</div>
-				<div>Weight: {details ? details.weight : ''}</div>
-				<div>Height: {details ? details.height : ''}</div>
+				<div>Weight: {details ? details.weight : 'ni mila'}</div>
+				<div>Height: {details ? details.height : 'ni mila'}</div>
 			</li>
 		</>
 	);
