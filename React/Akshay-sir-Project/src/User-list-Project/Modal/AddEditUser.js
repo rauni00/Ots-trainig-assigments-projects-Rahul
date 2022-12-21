@@ -42,7 +42,6 @@ const AddEditUser = ({ item, btnName, name, size, title }) => {
 							<br />
 							<br />
 							<label>Email</label>
-							{/* {title === 'Add User'} */}
 							<input
 								placeholder="Email"
 								name="email"
@@ -72,9 +71,6 @@ const AddEditUser = ({ item, btnName, name, size, title }) => {
 					</Button>
 				</Modal.Actions>
 			</Modal>
-			{/* <Segment style={{ width: '25%' }} size="mini"> */}
-
-			{/* </Segment> */}
 		</div>
 	);
 };

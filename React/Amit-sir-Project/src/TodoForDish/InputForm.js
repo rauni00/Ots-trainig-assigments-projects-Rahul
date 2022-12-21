@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Button, Form } from 'semantic-ui-react';
+import { addRecipes, logout } from './store';
 
 export default function InputForm({ addToList, btnName, oneItem, cancel, editTitle }) {
+	const dispatch = useDispatch();
+	// const { addRecipes } = useSelector((state) => state.user.data);
 	const [list, setList] = useState({
 		foodName: '',
 		chiefName: '',
@@ -11,6 +15,7 @@ export default function InputForm({ addToList, btnName, oneItem, cancel, editTit
 
 	useEffect(() => {
 		setList({ ...oneItem });
+		dispatch(logout());
 	}, [oneItem]);
 
 	const change = (e) => {
@@ -22,7 +27,9 @@ export default function InputForm({ addToList, btnName, oneItem, cancel, editTit
 	};
 
 	const onSubmit = () => {
-		addToList(list);
+		// addToList(list);
+		// console.log(list);
+		dispatch(addRecipes({ recipe: [list] }));
 		setList({
 			foodName: '',
 			chiefName: '',

@@ -8,8 +8,6 @@ const UserDelete = ({ trainee }) => {
 
 	const action = () => {
 		setOpen(false);
-		console.log(trainee);
-		console.log(deleteItems);
 		deleteItems(trainee);
 	};
 	return (

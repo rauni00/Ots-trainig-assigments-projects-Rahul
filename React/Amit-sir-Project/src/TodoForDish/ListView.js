@@ -1,21 +1,29 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Icon, Button, Loader } from 'semantic-ui-react';
 
 export default function ListView({ arr, details, deleteOne, edit }) {
-	const [loading, setLoading] = useState(false);
+	const recipe = useSelector((state) => state.user.data);
+	const [recipesList, setRecipesList] = useState(null);
+	// const [loading, setLoading] = useState(false);
 	useEffect(() => {
-		setLoading(true);
-		setTimeout(() => {
-			setLoading(false);
-		}, 500);
-	}, [arr]);
+		// setRecipesList((pre) => [...pre, recipe.recipe]);
+		console.log(recipe);
+		// console.log(recipesList, 'r2yu2jb');
+		// setLoading(true);
+		// setTimeout(() => {
+		// 	setLoading(false);
+		// 	console.log(recipesList);
+		// }, 500);
+	}, [recipe]);
 	return (
 		<>
-			{loading ? (
+			{/* {loading ? (
 				<Loader active inline="centered" style={{ margin: '6%' }} />
-			) : (
-				<div style={{ margin: 10, marginTop: 10 }}>
-					{arr.map((item) => (
+			) : ( */}
+			<div style={{ margin: 10, marginTop: 10 }}>
+				{!recipe === undefined &&
+					recipesList.recipe.map((item) => (
 						<div key={item}>
 							<div>
 								<ul>
@@ -53,8 +61,8 @@ export default function ListView({ arr, details, deleteOne, edit }) {
 							</div>
 						</div>
 					))}
-				</div>
-			)}
+			</div>
+			{/* )} */}
 		</>
 	);
 }

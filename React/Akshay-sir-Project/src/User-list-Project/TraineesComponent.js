@@ -47,7 +47,6 @@ const TraineesComponent = () => {
 			return 0;
 		});
 		if (name === 'ascending') {
-			console.log(ascending);
 			setSearchedTraineesList(ascending);
 			setName('');
 		} else if (name === 'descending') {
@@ -68,12 +67,11 @@ const TraineesComponent = () => {
 		setTraineesList(deleteItem);
 	};
 
-	const getEditedData = (item) => {
+	const getAddEditData = (item) => {
 		if (item.index === undefined) {
-			console.log(item);
 			setTraineesList((pre) => [...pre, item]);
 		} else {
-			const actualData = searchedTraineesList.map((list, i) => {
+			const actualData = traineesList.map((list, i) => {
 				if (item.index === i) {
 					return { ...item };
 				} else return list;
@@ -116,15 +114,11 @@ const TraineesComponent = () => {
 							trigger={<></>}
 						/>
 					</Button.Group>
-					{/* <Button size="small">
-						<AddEditUser name="add" size="large" btnName="Add User" title="Add User" />
-						Add User
-					</Button> */}
 				</div>
 			</div>
 
 			<div style={{ margin: '1rem' }}>
-				<EditedContext.Provider value={[getEditedData, deleteItems]}>
+				<EditedContext.Provider value={[getAddEditData, deleteItems]}>
 					<TraineesList trainees={searchTerm === '' ? traineesList : searchedTraineesList} />
 				</EditedContext.Provider>
 			</div>

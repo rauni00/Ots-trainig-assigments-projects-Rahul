@@ -14,3 +14,8 @@
 // React seducing
 // context api=>props drilling
 // Custom Hook
+
+// middleWare =it work in between the process ,execution stop and modify and the resume the response
+// Thunk is middleware to use async operation
+
+// Pure Fnc: has no side effects

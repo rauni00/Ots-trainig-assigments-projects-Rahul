@@ -6,10 +6,12 @@ import AddEditUser from './Modal/AddEditUser';
 const TraineesList = ({ trainees }) => {
 	return (
 		<>
-			<Button size="small">
-				<AddEditUser name="add" size="large" btnName="Add User" title="Add User" />
-				Add User
-			</Button>
+			<div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+				<Button size="small">
+					<AddEditUser name="add" size="large" btnName="Add User" title="Add User" />
+					Add User
+				</Button>
+			</div>
 			{trainees.length > 0 && (
 				<Table fixed>
 					<Table.Header>

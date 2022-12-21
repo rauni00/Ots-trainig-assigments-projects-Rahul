@@ -9,12 +9,10 @@ import React from 'react';
 import logo from './User-list-Project/image/logo.png';
 import { Image } from 'semantic-ui-react';
 import ContactUs from './User-list-Project/Contact Us/ContactUs';
+import Service from './User-list-Project/Services/Service';
 
 function App() {
 	return (
-		// <div className="App">
-		// 	<Index />
-		// </div>
 		<div className="App">
 			<div style={{ display: 'flex', justifyContent: 'space-between', margin: '1rem' }}>
 				<Image src={logo} size="large" />
@@ -22,7 +20,7 @@ function App() {
 			</div>
 			<Routes>
 				<Route path="/" element={<div>Home</div>} />
-				<Route path="/services" element={<div>Services</div>} />
+				<Route path="/services" element={<Service />} />
 				<Route path="/contactus" element={<ContactUs />} />
 				<Route path="/trainees" element={<TraineesComponent />} />
 			</Routes>

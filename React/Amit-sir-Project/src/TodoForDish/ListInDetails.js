@@ -3,7 +3,6 @@ import { Loader } from 'semantic-ui-react';
 
 export default function ListInDetails({ item }) {
 	const [loading, setLoading] = useState(false);
-
 	useEffect(() => {
 		setLoading(true);
 		setTimeout(() => {
