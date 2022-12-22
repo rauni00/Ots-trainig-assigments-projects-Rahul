@@ -5,12 +5,12 @@ const initialState = { data: { loading: false, pokemon: [], error: '' } };
 
 export const pokemonData = createAsyncThunk('pokemon/pokemonData', () => {
 	return axios
-		.get('https://pokeapi.co/api/v2/pokemon')
+		.get('https://pokeapi.co/api/v2/pokemon/')
 		.then((res) => res.data.results)
 		.catch((err) => console.log(err));
 });
 
-export const pokemon = createSlice({
+export const pokemonSlice = createSlice({
 	name: 'pokemon',
 	initialState,
 	extraReducers: (builder) => {

@@ -1,20 +1,13 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
-import { getPokemonReducer } from './Reduce/getPokemonReducer';
+import { pokemonSlice } from './Reduce/getPokemonReducer';
+import { pokemonDetailsSlice } from './Reduce/getPokemonDetailsReducer';
+
 // configureStore: helps to create store => returns store object
 // createSlice: helps to create reducers
 
-const initialState = {};
-
-const recipes = createSlice({
-	name: 'user',
-	initialState,
-	reducers: {},
-});
-
-export const { addRecipes, logout } = recipes.actions;
-
 export const store = configureStore({
 	reducer: {
-		pokemon: getPokemonReducer,
+		pokemon: pokemonSlice.reducer,
+		pokemonDetails: pokemonDetailsSlice.reducer,
 	},
 });
