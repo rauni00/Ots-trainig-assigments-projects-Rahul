@@ -1,8 +1,8 @@
 import { createSlice, current } from '@reduxjs/toolkit';
 
-const initialState = { data: { cartItem: { id: { item: {}, count: 0 } } } };
+// const initialState = { data: { cartItem: { id: { item: {}, count: 0 } } } };
 // const initialState = { data: { cartItem: [{ id: null, item: {}, count: 0 }] } };
-// const initialState = { data: { id: null, cartItem: {}, count: 0 } };
+const initialState = { data: { cartItem: { 0: { item: {}, count: 0 } } } };
 
 // cartItem: {
 //    1:{item: {id: 1, name:'Smart Tv', price:'200$'}, count:5}
@@ -21,16 +21,19 @@ const cartSlice = createSlice({
 	name: 'cart',
 	initialState,
 	reducers: {
-		addCart: (state, action) => {
-			const item = state.data.cartItem;
-			const pre = item.map((item) => {
-				if (item.id === action.payload.id) {
-					return { ...item, count: item.count + 1 };
-				} else {
-					return { id: action.payload.id, item: { ...action.payload }, count: 0 };
-				}
-			});
-			console.log(pre);
+		addCart: (state, action, i) => {
+			// const item = state.data.cartItem;
+			// const pre = item.map((item) => {
+			// 	if (item.id === action.payload.id) {
+			// 		return { item, ...item, count: item.count + 1 };
+			// 		// console.log(item);
+			// 	} else {
+			// 		return { item, id: action.payload.id, item: { ...action.payload }, count: 0 };
+			// 		// console.log(item);
+			// 		// state.data={cartItem}
+			// 	}
+			// });
+			// console.log(pre);
 			// const obj = { [action.payload.id]: { item: { ...action.payload }, count: state.data.cartItem } };
 			// state.data.cartItem.push({});
 			// let id = state.data.id;

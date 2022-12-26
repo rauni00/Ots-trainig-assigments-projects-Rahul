@@ -11,7 +11,7 @@ export default function Service() {
 						wrapped
 					/>
 					<Card.Content>
-						<Card.Header>Matthew</Card.Header>
+						<Card.Header>Redux</Card.Header>
 						<Card.Meta>
 							<span className="date">Joined in 2015</span>
 						</Card.Meta>
