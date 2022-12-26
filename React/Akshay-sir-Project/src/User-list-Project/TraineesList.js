@@ -61,7 +61,7 @@ const TraineesList = ({ trainees }) => {
 						})}
 				</Table>
 			)}
-			<div>{trainees.length === 0 && <div>No Data Found!</div>}</div>
+			<div>{trainees.length === 0 && <div>No Data !</div>}</div>
 		</>
 	);
 };

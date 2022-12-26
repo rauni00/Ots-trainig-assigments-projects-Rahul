@@ -22,3 +22,13 @@
 .edit:hover {
     color: cornflowerblue;
 }
+
+.effect {
+    background-color: aliceblue;
+}
+
+.effect:hover {
+    background-color: rgb(180, 118, 36);
+    cursor: pointer;
+    border: 2px solid rgb(255, 255, 255);
+}
