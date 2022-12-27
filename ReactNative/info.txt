@@ -1,3 +1,4 @@
 for creating new Apk cmd = npx react-native init <name>
 for styling there is style component and emotion
 for container there is View import from react-native
+ruby will run the bundler and create 

@@ -6,4 +6,31 @@
 // 1=>
 let str = 'hello world to all';
 // let
-console.log(str);
+let reverseStr = '';
+for (i = str.length - 1; i >= 0; i--) {
+	reverseStr += str[i];
+}
+
+// reverse a word?
+let newarr = str.split(' ');
+let reverseWord = [];
+
+for (i = newarr.length; i >= 0; i--) {
+	reverseWord.push(newarr[i]);
+}
+// console.log(reverseWord.join(' '));
+
+// 2=>
+
+const duplicateCharCount = (str) => {
+	var obj = {};
+	for (let i = 0; i < str.length; i++) {
+		if (obj[str.toLowerCase()[i]]) {
+			obj[str.toLowerCase()[i]] += obj[str.toLowerCase()[i]];
+		} else {
+			obj[str.toLowerCase()[i]] = 1;
+		}
+	}
+	return obj;
+};
+console.log(duplicateCharCount('sstTrr'));

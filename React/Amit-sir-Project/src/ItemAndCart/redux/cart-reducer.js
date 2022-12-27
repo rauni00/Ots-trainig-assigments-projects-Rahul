@@ -21,7 +21,13 @@ const cartSlice = createSlice({
 	name: 'cart',
 	initialState,
 	reducers: {
-		addCart: (state, action, i) => {
+		addCart: (state, action) => {
+			if (state.data.cartItem[0] === action.payload.id) {
+				state.data = { cartItem: { ...state.data.cartItem, count: state.data.cartItem[0].count + 1 } };
+			} else {
+				state.data = { cartItem: { [action.payload.id]: { item: { ...action.payload }, count: 0 } } };
+			}
+			console.log(state.data);
 			// const item = state.data.cartItem;
 			// const pre = item.map((item) => {
 			// 	if (item.id === action.payload.id) {
