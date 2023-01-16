@@ -32,4 +32,23 @@ router.post("/addUser", (req, res) => {
 		.catch((err) => console.log(err));
 });
 
+router.put("/update", (req, res) => {
+	const { email, name, password, mobile } = req.body;
+	const updateUser = {
+		name: name,
+		email: email,
+		password: password,
+		mobile: mobile,
+	};
+	User.findOneAndUpdate({ email: email }, { $set: updateUser }, { new: true })
+		.then((user) => {
+			if (user) {
+				res.json(user);
+			} else {
+				res.json({ msg: "User Not Found" });
+			}
+		})
+		.catch((err) => console.log(err));
+});
+
 module.exports = router;

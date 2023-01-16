@@ -1,14 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
 import "./index.css";
+import Loader from "./Components/Loader";
 
 const App = () => (
-  <div className="container">
-    <div>Name: Child</div>
-    <div>Framework: react</div>
-    <div>Language: JavaScript</div>
-    <div>CSS: Empty CSS</div>
-  </div>
+	<div className="container">
+		<Loader />
+	</div>
 );
 ReactDOM.render(<App />, document.getElementById("app"));
