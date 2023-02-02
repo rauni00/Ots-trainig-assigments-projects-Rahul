@@ -1,0 +1,14 @@
+<div class="book_details_container">
+
+  <div>
+    {{#each book}}
+      <div>
+        <h3 style="color: red">{{this.title}}</h3>
+        <span>Author : {{this.author}}</span>
+        <br />
+        <span style="color: grey">{{this.description}}</span>
+      </div>
+
+    {{/each}}
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="books_container">
+	<div style="margin-bottom: 5rem">
+		<h3 style="display:inline; color: pink;">List Of Books Available</h3>
+		<a href="/add-book" target="_blank"><button type="button" class="btn btn-primary btn-right">
+				Add a Book
+			</button></a>
+	</div>
+	{{books}}
+	<div>
+		{{#each books}}
+			{{#if this.display}}
+				<div class="list_all_books"><a href="/books/{{this.id}}">{{this.title}}</a></div>
+			{{/if}}
+		{{/each}}
+	</div>
+</div>
